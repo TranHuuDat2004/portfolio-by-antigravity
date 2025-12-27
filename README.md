@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Trần Hữu Đạt - Personal Portfolio
 
-## Getting Started
+![Portfolio Preview](public/assets/screenshot.png)
 
-First, run the development server:
+A modern, responsive, and interactive personal portfolio website built to showcase my projects, skills, and professional journey as a Software Engineering student.
+
+## 🚀 Overview
+
+This portfolio serves as a central hub for my work, featuring a dynamic project gallery, a blog system for sharing knowledge, and a dedicated space for my resume. It is designed with a focus on user experience (UX), aesthetics, and performance.
+
+## ✨ Key Features
+
+*   **Modern Design**: Minimalist layout with "Glassmorphism" effects and sophisticated typography.
+*   **Interactive UI**: Smooth animations and transitions powered by **Framer Motion**.
+*   **Project Gallery**: Filterable grid layout to showcase web, mobile, and design projects.
+*   **Dynamic Blog**: A built-in blog system supporting rich content and SEO-friendly URLs.
+*   **Resume Hub**: Dedicated page for viewing and downloading different versions of my CV.
+*   **Theme System**: Dark mode by default with special seasonal themes (e.g., Christmas, Halloween).
+*   **Responsive**: Fully optimized for all devices, from mobile phones to large desktop screens.
+
+## 🛠️ Tech Stack
+
+*   **Framework**: [Next.js 14](https://nextjs.org/) (App Router)
+*   **Language**: [TypeScript](https://www.typescriptlang.org/)
+*   **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+*   **Animations**: [Framer Motion](https://www.framer.com/motion/)
+*   **UI Components**: [Shadcn/ui](https://ui.shadcn.com/)
+*   **Icons**: [Lucide React](https://lucide.dev/)
+
+## 📦 Getting Started
+
+First, clone the repository and install dependencies:
+
+```bash
+git clone https://github.com/TranHuuDat2004/portfolio-by-antigravity.git
+cd portfolio-by-antigravity
+npm install
+```
+
+Then, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📂 Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+├── app/                  # Next.js App Router pages and layouts
+│   ├── (routes)/         # Route groups (home, about, works, etc.)
+│   └── globals.css       # Global styles and Tailwind imports
+├── components/           # Reusable UI components
+│   ├── common/           # Header, Footer, Navigation
+│   ├── home/             # Sections for the Homepage
+│   ├── works/            # Project Gallery and Cards
+│   └── ui/               # Shadcn UI primitives
+├── lib/                  # Utility functions and constants (data)
+└── public/               # Static assets (images, icons)
+```
 
-## Learn More
+## 📬 Contact
 
-To learn more about Next.js, take a look at the following resources:
+*   **Email**: [tranhuudat.cv@gmail.com](mailto:tranhuudat.cv@gmail.com)
+*   **LinkedIn**: [linkedin.com/in/tranhuudat2004](https://linkedin.com/in/tranhuudat2004)
+*   **GitHub**: [github.com/TranHuuDat2004](https://github.com/TranHuuDat2004)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+*Built with ❤️ by Trần Hữu Đạt*
