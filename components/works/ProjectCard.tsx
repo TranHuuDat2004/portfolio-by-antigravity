@@ -35,12 +35,13 @@ export function ProjectCard({ project }: ProjectCardProps) {
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
-            <div className="relative aspect-[16/9] overflow-hidden rounded-xl bg-muted mb-6 border border-border/50">
+            <div className="relative w-full aspect-video rounded-xl overflow-hidden border border-border/50 mb-6 bg-secondary/20">
                 <Image
                     src={project.image}
                     alt={project.title}
                     fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="object-contain p-1 transition-transform duration-500 group-hover:scale-105"
+                    priority={false}
                 />
 
                 {/* Overlay on hover */}

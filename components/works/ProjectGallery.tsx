@@ -25,7 +25,7 @@ export function ProjectGallery() {
 
             <motion.div
                 layout
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-x-8 gap-y-16"
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12"
             >
                 <AnimatePresence mode="popLayout">
                     {filteredProjects.map((project) => (
