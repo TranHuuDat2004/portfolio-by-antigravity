@@ -1,10 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export function StorySection() {
     return (
-        <section className="container mx-auto px-4 md:px-6 py-24">
+        <section className="container mx-auto px-4 md:px-6 py-24" id="about">
             <div className="grid md:grid-cols-2 gap-16 items-center">
                 <motion.div
                     initial={{ opacity: 0, x: -50 }}
@@ -12,26 +13,45 @@ export function StorySection() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.8 }}
                 >
+                    <span className="text-sm font-mono uppercase tracking-widest text-primary mb-2 block">My personal story</span>
                     <h2 className="text-4xl md:text-5xl font-bold mb-8 uppercase tracking-tighter">
-                        From Code<br />to Canvas
+                        About Me
                     </h2>
                     <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
                         <p>
-                            I started my journey as a graphic designer, obsessed with typography and grid systems.
-                            But as I delved deeper into the digital realm, I realized that static designs
-                            could only tell half the story.
+                            I am a dedicated Software Engineering student at Ton Duc Thang University with a deep passion
+                            for building efficient and user-friendly web solutions. My journey into programming started
+                            with a curiosity to understand how things work, and it has grown into a drive to create
+                            meaningful applications.
                         </p>
                         <p>
-                            Coding became my new medium. It allowed me to breathe life into my creations,
-                            transforming passive visuals into immersive experiences. Today, I bridge the gap
-                            between design and engineering, building products that not only work flawlessly
-                            but also feel vibrant and alive.
+                            I enjoy tackling challenging problems and continuously expanding my skill set in the
+                            ever-evolving world of technology. From developing full-stack e-commerce platforms to
+                            creating fun, interactive web apps, my goal is to leverage my technical abilities to build
+                            impactful products.
                         </p>
-                        <p>
-                            My approach is minimalist but bold. I believe in stripping away the unnecessary
-                            to reveal the essence of a digital product. Every animation, every transition,
-                            serves a purpose: to guide, to inform, and to delight.
-                        </p>
+
+                        <div className="grid grid-cols-2 gap-4 mt-8 pt-8 border-t border-border/50">
+                            <div>
+                                <span className="block text-xs font-mono uppercase text-muted-foreground mb-1">Name</span>
+                                <p className="font-medium text-foreground">Trần Hữu Đạt</p>
+                            </div>
+                            <div>
+                                <span className="block text-xs font-mono uppercase text-muted-foreground mb-1">Location</span>
+                                <p className="font-medium text-foreground">Ho Chi Minh City, VN</p>
+                            </div>
+                            <div>
+                                <span className="block text-xs font-mono uppercase text-muted-foreground mb-1">Email</span>
+                                <p className="font-medium text-foreground">tranhuudat.cv@gmail.com</p>
+                            </div>
+                            <div>
+                                <span className="block text-xs font-mono uppercase text-muted-foreground mb-1">Availability</span>
+                                <p className="font-medium text-primary flex items-center gap-2">
+                                    <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
+                                    Open to Internship
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </motion.div>
 
@@ -40,15 +60,9 @@ export function StorySection() {
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8 }}
-                    className="aspect-square relative bg-muted rounded-2xl overflow-hidden"
+                    className="aspect-[3/4] relative bg-muted rounded-2xl overflow-hidden border border-border"
                 >
-                    {/* Placeholder for profile image */}
-                    <div className="absolute inset-0 bg-neutral-900 flex items-center justify-center">
-                        <span className="text-9xl font-black text-neutral-800 uppercase rotate-[-5deg]">
-                            Story
-                        </span>
-                    </div>
-                    <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
+                    <Image src="/assets/my_image.jpg" alt="Trần Hữu Đạt" fill className="object-cover" />
                 </motion.div>
             </div>
         </section>

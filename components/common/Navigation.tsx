@@ -4,13 +4,13 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Download, Moon, Sun } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navItems = [
-    { name: "Home", href: "/(routes)" }, // Adjusted to point to root, handled via Next.js logic
-    { name: "Works", href: "/works" },
+    { name: "Home", href: "/(routes)" },
     { name: "About", href: "/about" },
+    { name: "Projects", href: "/works" },
     { name: "Contact", href: "/contact" },
 ];
 
@@ -27,7 +27,6 @@ export function Navigation() {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
-    // Close mobile menu on path change
     useEffect(() => {
         setIsOpen(false);
     }, [pathname]);
@@ -40,37 +39,34 @@ export function Navigation() {
             )}
         >
             <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
-                <Link href="/" className="text-2xl font-bold tracking-tighter uppercase relative group overflow-hidden">
-                    <span className="block transition-transform duration-500 group-hover:-translate-y-full">
-                        Portfolio
-                    </span>
-                    <span className="absolute top-0 left-0 block translate-y-full transition-transform duration-500 group-hover:translate-y-0">
-                        Portfolio
-                    </span>
+                <Link href="/" className="text-xl md:text-2xl font-bold tracking-tighter lowercase relative group overflow-hidden">
+                    <span>tranhuudat</span>
+                    <span className="font-light opacity-80">2004</span>
                 </Link>
 
                 {/* Desktop Nav */}
-                <div className="hidden md:flex items-center gap-8">
+                <div className="hidden md:flex items-center gap-1">
                     {navItems.filter(item => item.name !== "Home").map((item) => (
                         <Link
-                            key={item.href}
-                            href={item.href}
-                            className="relative text-sm font-medium uppercase tracking-wide px-2 py-1 group overflow-hidden"
+                            key={item.name}
+                            href={item.href === "/(routes)" ? "/" : item.href}
+                            className="relative text-sm font-medium uppercase tracking-wide px-3 py-1 group overflow-hidden hover:text-primary transition-colors"
                         >
-                            <span className="relative z-10 block transition-transform duration-500 group-hover:-translate-y-full">
-                                {item.name}
-                            </span>
-                            <span className="absolute top-0 left-0 z-10 block translate-y-full transition-transform duration-500 group-hover:translate-y-0 px-2 py-1">
-                                {item.name}
-                            </span>
+                            {item.name}
                             {pathname === item.href && (
                                 <motion.span
                                     layoutId="underline"
-                                    className="absolute left-0 bottom-0 w-full h-[1px] bg-white"
+                                    className="absolute left-0 bottom-0 w-full h-[1px] bg-primary"
                                 />
                             )}
                         </Link>
                     ))}
+
+                    <div className="h-4 w-[1px] bg-white/20 mx-2" />
+
+                    <Link href="/resume" className="text-sm font-bold uppercase tracking-wider px-4 py-2 border border-white/20 rounded-full hover:bg-white hover:text-black transition-all flex items-center gap-2">
+                        Resume <Download size={14} />
+                    </Link>
                 </div>
 
                 {/* Mobile Toggle */}
@@ -95,7 +91,7 @@ export function Navigation() {
                             <div className="flex flex-col items-center gap-6">
                                 {navItems.map((item, i) => (
                                     <motion.div
-                                        key={item.href}
+                                        key={item.name}
                                         initial={{ opacity: 0, y: 20 }}
                                         animate={{ opacity: 1, y: 0 }}
                                         transition={{ delay: 0.1 * i + 0.3 }}
@@ -108,6 +104,15 @@ export function Navigation() {
                                         </Link>
                                     </motion.div>
                                 ))}
+                                <motion.div
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: 0.8 }}
+                                >
+                                    <Link href="/resume" className="text-xl font-bold uppercase tracking-wider px-6 py-3 border border-foreground rounded-full hover:bg-foreground hover:text-background transition-all flex items-center gap-2 mt-4">
+                                        Resume <Download size={18} />
+                                    </Link>
+                                </motion.div>
                             </div>
                         </motion.div>
                     )}

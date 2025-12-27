@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Github } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 
@@ -13,10 +13,10 @@ interface ProjectCardProps {
         title: string;
         category: string;
         image: string;
-        video?: string;
         description: string;
         tech: string[];
         link: string;
+        github?: string;
         year: string;
     };
 }
@@ -31,63 +31,58 @@ export function ProjectCard({ project }: ProjectCardProps) {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.3 }}
-            className="group relative w-full"
+            className="group relative w-full flex flex-col"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
-            <Link href={project.link} target="_blank" className="block">
-                <div className="relative aspect-[4/3] overflow-hidden rounded-lg bg-muted">
-                    {/* Fallback image if video fails or while loading. In real app, use real images. */}
-                    <div className="absolute inset-0 bg-neutral-800 flex items-center justify-center text-neutral-600">
-                        {/* Placeholder for no image */}
-                        <span className="text-4xl font-bold opacity-20">{project.title[0]}</span>
-                    </div>
+            <div className="relative aspect-[16/9] overflow-hidden rounded-xl bg-muted mb-6 border border-border/50">
+                <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                />
 
-                    {/* We would put an Image component here, but for now using a div placeholder or simple img if available 
-              If using real images, use next/image. For this demo, I rely on the placeholder div above 
-              and overlay "Image" text if you want, or just colors. 
-              Let's simulate an image with a gradient since we don't have files.
-          */}
-                    <div className={cn(
-                        "absolute inset-0 bg-gradient-to-br transition-opacity duration-500",
-                        project.id % 2 === 0 ? "from-indigo-500/20 to-purple-500/20" : "from-emerald-500/20 to-teal-500/20",
-                        isHovered ? "opacity-0" : "opacity-100"
-                    )} />
-
-                    {/* Video Preview on Hover (Simulated with simple color change or animation for now as we lack video files) */}
-                    <div className={cn(
-                        "absolute inset-0 bg-neutral-900 transition-opacity duration-500 flex items-center justify-center",
-                        isHovered ? "opacity-100" : "opacity-0"
-                    )}>
-                        <span className="text-sm font-mono text-primary animate-pulse">PLAYING PREVIEW...</span>
-                    </div>
-
-                    <div className="absolute top-4 right-4 bg-background/80 backdrop-blur px-2 py-1 rounded-full text-xs font-mono uppercase border border-border">
-                        {project.category}
-                    </div>
-                </div>
-
-                <div className="mt-4 flex items-start justify-between">
-                    <div>
-                        <h3 className="text-2xl font-bold uppercase tracking-tight group-hover:text-primary transition-colors">
-                            {project.title}
-                        </h3>
-                        <p className="text-muted-foreground text-sm mt-1 line-clamp-2 max-w-sm">
-                            {project.description}
-                        </p>
-                        <div className="flex flex-wrap gap-2 mt-3">
-                            {project.tech.map(t => (
-                                <span key={t} className="text-xs text-muted-foreground/60 border border-border/50 px-1.5 py-0.5 rounded">
-                                    {t}
-                                </span>
-                            ))}
-                        </div>
-                    </div>
-                    <div className="p-2 rounded-full border border-border group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                {/* Overlay on hover */}
+                <div className={cn(
+                    "absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4"
+                )}>
+                    <Link href={project.link} target="_blank" className="p-3 bg-white text-black rounded-full hover:scale-110 transition-transform">
                         <ArrowUpRight size={20} />
+                    </Link>
+                    {project.github && (
+                        <Link href={project.github} target="_blank" className="p-3 bg-black text-white border border-white/20 rounded-full hover:scale-110 transition-transform">
+                            <Github size={20} />
+                        </Link>
+                    )}
+                </div>
+            </div>
+
+            <div className="flex justify-between items-start gap-4">
+                <div>
+                    <div className="flex items-center gap-3 mb-2">
+                        <span className="text-xs font-mono uppercase tracking-widest text-primary border border-primary/20 px-2 py-0.5 rounded">
+                            {project.year}
+                        </span>
+                        <span className="text-xs font-mono uppercase tracking-widest text-muted-foreground">
+                            {project.category}
+                        </span>
+                    </div>
+                    <h3 className="text-2xl font-bold uppercase tracking-tight mb-2 group-hover:text-primary transition-colors">
+                        {project.title}
+                    </h3>
+                    <p className="text-muted-foreground text-sm line-clamp-2 max-w-sm mb-4">
+                        {project.description}
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                        {project.tech.map(t => (
+                            <span key={t} className="text-xs font-medium text-foreground/80 bg-muted px-2 py-1 rounded">
+                                {t}
+                            </span>
+                        ))}
                     </div>
                 </div>
-            </Link>
+            </div>
         </motion.div>
     );
 }

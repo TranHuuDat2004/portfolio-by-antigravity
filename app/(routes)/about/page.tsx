@@ -1,5 +1,7 @@
 import { StorySection } from "@/components/about/StorySection";
 import { TechStackTicker } from "@/components/about/TechStackTicker";
+import { ExperienceSection } from "@/components/about/ExperienceSection";
+import { AwardsSection } from "@/components/about/AwardsSection";
 
 export default function AboutPage() {
     return (
@@ -12,6 +14,8 @@ export default function AboutPage() {
 
             <TechStackTicker />
             <StorySection />
+            <ExperienceSection />
+            <AwardsSection />
 
             <div className="container mx-auto px-4 md:px-6 text-center mt-24">
                 <p className="text-xl uppercase tracking-widest text-muted-foreground mb-4">Let's create something together</p>
