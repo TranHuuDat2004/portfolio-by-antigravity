@@ -22,8 +22,20 @@ export function HeroSection() {
             className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-background"
             id="hero"
         >
-            <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px]" />
-            <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background/80 pointer-events-none" />
+            {/* Background Wallpaper */}
+            <div className="absolute inset-0 z-0">
+                <Image
+                    src="/assets/wallpaper2.jpg"
+                    alt="Background"
+                    fill
+                    className="object-cover opacity-60"
+                    priority
+                />
+                <div className="absolute inset-0 bg-black/60" /> {/* Dark overlay for text readability */}
+            </div>
+
+            <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px] z-[1]" />
+            <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-transparent to-background z-[1] pointer-events-none" />
 
             <motion.div
                 style={{ y, opacity }}
